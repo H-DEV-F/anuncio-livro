@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx", // para React 17 ou 18
+        "module": "esnext",
+        "target": "es6",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true
+    }
+}
