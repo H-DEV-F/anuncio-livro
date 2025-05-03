@@ -24,7 +24,7 @@ const Form = () => (
                                         name="first-name"
                                         type="text"
                                         autoComplete="given-name"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
@@ -39,7 +39,7 @@ const Form = () => (
                                         name="last-name"
                                         type="text"
                                         autoComplete="family-name"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ const Form = () => (
                                         name="email"
                                         type="email"
                                         autoComplete="email"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ const Form = () => (
                                         name="street-address"
                                         type="text"
                                         autoComplete="street-address"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
@@ -86,7 +86,7 @@ const Form = () => (
                                         name="city"
                                         type="text"
                                         autoComplete="address-level2"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                                     />
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ const Form = () => (
                                         name="region"
                                         type="text"
                                         autoComplete="address-level1"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
@@ -116,7 +116,7 @@ const Form = () => (
                                         name="postal-code"
                                         type="text"
                                         autoComplete="postal-code"
-                                        className="block w-full rounded-md bg-white px-3 py-1.4 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 </div>
                             </div>
