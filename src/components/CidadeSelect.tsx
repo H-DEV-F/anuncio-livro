@@ -12,7 +12,7 @@ const CidadesSelect = () => {
     }, []);
 
     return (
-        <div className="sm:col-span-3">
+        <div className="sm:col-span-4">
             <label htmlFor="cidade" className="block text-sm/8 font-medium text-gray-400">
                 Cidade:
             </label>
@@ -21,9 +21,9 @@ const CidadesSelect = () => {
                     id="cidade"
                     name="cidade"
                     autoComplete="address-level2"
-                    className="block w-full appearance-none rounded-md bg-white py-[3.5px] pr-8 pl-3 text-base text-gray-900 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md bg-white py-[3.5px] pr-8 pl-3 text-base text-gray-900 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
-                    <option value="">Selecione uma cidade</option>
+                    <option value="">Cidade...</option>
                     {cidades.map((cidade, index) => (
                         <option key={index} value={cidade}>
                             {cidade} - {cidade}

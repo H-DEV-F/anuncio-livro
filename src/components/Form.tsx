@@ -59,8 +59,6 @@ const Form = () => (
                                 </div>
                             </div>
 
-                            <CidadesSelect />
-
                             <div className="col-span-full">
                                 <label htmlFor="street-address" className="block text-sm/8 font-medium text-gray-400">
                                     Enderço:
@@ -76,32 +74,24 @@ const Form = () => (
                                 </div>
                             </div>
 
-                            <div className="sm:col-span-2 sm:col-start-1">
-                                <label htmlFor="city" className="block text-sm/8 font-medium text-gray-400">
-                                    Cidade:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="city"
-                                        name="city"
-                                        type="text"
-                                        autoComplete="address-level2"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                                    />
-                                </div>
-                            </div>
+                            <CidadesSelect />
 
                             <div className="sm:col-span-2">
                                 <label htmlFor="region" className="block text-sm/8 font-medium text-gray-400">
                                     Estado:
                                 </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="region"
-                                        name="region"
-                                        type="text"
-                                        autoComplete="address-level1"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                <div className="mt-1 relative">
+                                    <select
+                                        id="estado"
+                                        name="estado"
+                                        autoComplete="address-level2"
+                                        className="block w-full appearance-none rounded-md bg-white py-[3.5px] pr-8 pl-3 text-base text-gray-900 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                    >
+                                        <option value="">Estado...</option>
+                                    </select>
+                                    <ChevronDownIcon
+                                        className="pointer-events-none absolute right-2 top-1.5 h-5 w-5 text-gray-500"
+                                        aria-hidden="true"
                                     />
                                 </div>
                             </div>
