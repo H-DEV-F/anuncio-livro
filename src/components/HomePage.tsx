@@ -62,7 +62,7 @@ const HomePage = () => {
                 navigation
                 spaceBetween={30}
                 slidesPerView={1}
-                className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-xl"
+                className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 scroll-mt-24 backdrop-blur-md"
             >
                 {images.map((src, idx) => (
                     <SwiperSlide key={idx}>
