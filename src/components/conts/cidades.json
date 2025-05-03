@@ -1,0 +1,12 @@
+{
+    "data" :[ 
+        {
+            "nome": "São Paulo",
+            "uf": "SP"
+        },
+        {
+            "nome": "Rio de Janeiro",
+            "uf": "RJ"
+        }
+    ]
+}

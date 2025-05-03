@@ -10,9 +10,7 @@ import { Navigation } from "swiper/modules";
 const targetDate = new Date("2025-06-15T00:00:00");
 
 const images = [
-    "/images/imagem1.jpg",
-    "/images/imagem2.jpg",
-    "/images/imagem3.jpg",
+    "/images/image1.png"
 ];
 
 const HomePage = () => {
@@ -39,7 +37,7 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 pt-24 pb-12 space-y-10 text-white">
             <motion.h1
-                className="text-5xl font-bold text-center cursor-pointer"
+                className="text-4xl font-bold text-center cursor-pointer"
                 initial={{ opacity: 1 }}
                 whileHover={{
                     scale: 1.01,
@@ -47,12 +45,12 @@ const HomePage = () => {
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
             >
-                Lançamento do Livro
+                A Ponte: O Caminho para o conhecimento
             </motion.h1>
 
             <div className="text-center">
-                <p className="text-lg mb-2">Contagem do Desafio:</p>
-                <div className="flex gap-4 text-2xl font-mono justify-center">
+                <p className="text-xl mb-2">Contagem do Desafio:</p>
+                <div className="flex gap-4 text-3xl font-mono justify-center">
                     <span>{String(timeLeft.days).padStart(2, "0")}d</span>
                     <span>{String(timeLeft.hours).padStart(2, "0")}h</span>
                     <span>{String(timeLeft.minutes).padStart(2, "0")}m</span>
@@ -94,10 +92,11 @@ const HomePage = () => {
                     Sobre
                 </motion.h1>
                 <br></br>
-                <p className="text-lg text-gray-400 leading-relaxed px-4">
-                    Este livro é fruto de anos de dedicação e pesquisa. Nele, você encontrará reflexões profundas,
-                    histórias envolventes e insights valiosos para sua jornada pessoal e profissional. Esperamos
-                    que cada página inspire você a transformar ideias em ação.
+                <p className="text-xs text-gray-400 leading-relaxed px-12">
+                Este livro é resultado de uma longa jornada de aprendizados, experiências e reflexões acumuladas ao longo dos anos. Em suas páginas,
+                você encontrará conteúdos ricos e transformadores, com ensinamentos que visam fortalecer sua caminhada pessoal, espiritual e emocional.
+                Cada capítulo foi cuidadosamente elaborado para oferecer clareza, sabedoria e inspiração, convidando você a colocar em prática valores
+                que promovem o autoconhecimento e a mudança real.
                 </p>
             </div>
         </div>

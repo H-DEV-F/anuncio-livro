@@ -6,7 +6,7 @@ const Layout = () => (
         <NavBar />
         <main className="pt-20" 
             style={{
-                        backgroundImage: `linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/images/imagem3.jpg')`
+                        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/background-image.png')`
                     }}>
             <Outlet />
         </main>
