@@ -1,4 +1,3 @@
-// CarrosselPage.tsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,11 +91,11 @@ const HomePage = () => {
                     Sobre
                 </motion.h1>
                 <br></br>
-                <p className="text-xs text-gray-400 leading-relaxed px-12">
-                Este livro é resultado de uma longa jornada de aprendizados, experiências e reflexões acumuladas ao longo dos anos. Em suas páginas,
-                você encontrará conteúdos ricos e transformadores, com ensinamentos que visam fortalecer sua caminhada pessoal, espiritual e emocional.
-                Cada capítulo foi cuidadosamente elaborado para oferecer clareza, sabedoria e inspiração, convidando você a colocar em prática valores
-                que promovem o autoconhecimento e a mudança real.
+                <p className="text-lg text-gray-500 leading-relaxed text-center max-w-4xl mx-auto px-4">
+                    Este livro é resultado de uma longa jornada de aprendizados, experiências e reflexões acumuladas ao longo dos anos. Em suas páginas,
+                    você encontrará conteúdos ricos e transformadores, com ensinamentos que visam fortalecer sua caminhada pessoal, espiritual e emocional.
+                    Cada capítulo foi cuidadosamente elaborado para oferecer clareza, sabedoria e inspiração, convidando você a colocar em prática valores
+                    que promovem o autoconhecimento e a mudança real.
                 </p>
             </div>
         </div>
