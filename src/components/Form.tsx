@@ -14,7 +14,7 @@ const Form = () => (
                     <div className="border-b border-gray-900/10 pb-12">
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div className="sm:col-span-3">
+                            <div className="sm:col-span-2">
                                 <label htmlFor="first-name" className="block text-sm/8 font-medium text-gray-400">
                                     Nome:
                                 </label>
@@ -29,7 +29,7 @@ const Form = () => (
                                 </div>
                             </div>
 
-                            <div className="sm:col-span-3">
+                            <div className="sm:col-span-4">
                                 <label htmlFor="last-name" className="block text-sm/8 font-medium text-gray-400">
                                     Sobrenome:
                                 </label>
