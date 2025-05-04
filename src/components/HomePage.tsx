@@ -31,18 +31,18 @@ const HomePage = () => {
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 pt-24 pb-12 space-y-10 text-white">
             <p className="text-center cursor-pointer font-custom-playerfair mb-12">
-                <span className="text-[20px] sm:text-[25px] md:text-[35px] lg:text-[55px]">PONTES</span>
-                <span className="text-[15px] sm:text-[20px] md:text-[25px] lg:text-[35px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">PARA A NOVA</span>
-                <span className="text-[20px] sm:text-[25px] md:text-[35px] lg:text-[55px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">REALIDADE</span>
+                <span className="text-[22px] sm:text-[25px] md:text-[35px] lg:text-[55px]">PONTES</span>
+                <span className="text-[17px] sm:text-[20px] md:text-[25px] lg:text-[35px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">PARA A NOVA</span>
+                <span className="text-[22px] sm:text-[25px] md:text-[35px] lg:text-[55px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">REALIDADE</span>
             </p>
 
             <div className="text-center" style={{ marginBottom: "5px" }}>
-                <p className="text-xl mb-2">Contagem para o Desafio:</p>
-                <div className="flex gap-4 text-3xl font-mono justify-center">
-                    <span>{String(timeLeft.days).padStart(2, "0")}d</span>
-                    <span>{String(timeLeft.hours).padStart(2, "0")}h</span>
-                    <span>{String(timeLeft.minutes).padStart(2, "0")}m</span>
-                    <span>{String(timeLeft.seconds).padStart(2, "0")}s</span>
+                <p className="text-[20px] md:text-[25px] lg:text-[30px] mb-2">Contagem para o Desafio:</p>
+                <div className="flex gap-4 font-mono justify-center mt-5">
+                    <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.days).padStart(2, "0")}d</span>
+                    <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.hours).padStart(2, "0")}h</span>
+                    <span className="text-[20px] md:text-[30px]1 lg:text-[35px]">{String(timeLeft.minutes).padStart(2, "0")}m</span>
+                    <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.seconds).padStart(2, "0")}s</span>
                 </div>
             </div>
             <hr></hr>
