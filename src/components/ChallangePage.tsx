@@ -1,14 +1,13 @@
 import React from "react";
-import CidadesSelect from "./CidadeSelect";
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
-const Form = () => (
+const ChallengePage = () => (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
         <div
             id="contato"
             className="w-full max-w-xl bg-black/30 p-8 rounded-2xl shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 scroll-mt-24 backdrop-blur-md"
-        >
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 font-color-white">Cadastre-se</h2>
+            style={{ marginBottom: "100px" }}>
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 font-color-white font-custom-playerfair">O MAIOR ENIGMA DE TODOS OS TEMPOS</h2>
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-800 font-color-white">Preencha o Desafio</h3>
             <form>
                 <div className="space-y-12 font-color-white">
                     <div className="border-b border-gray-900/10 pb-12">
@@ -58,58 +57,6 @@ const Form = () => (
                                     />
                                 </div>
                             </div>
-
-                            <div className="col-span-full">
-                                <label htmlFor="street-address" className="block text-sm/8 font-medium text-gray-400">
-                                    Enderço:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="street-address"
-                                        name="street-address"
-                                        type="text"
-                                        autoComplete="street-address"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    />
-                                </div>
-                            </div>
-
-                            <CidadesSelect />
-
-                            <div className="sm:col-span-2">
-                                <label htmlFor="region" className="block text-sm/8 font-medium text-gray-400">
-                                    Estado:
-                                </label>
-                                <div className="mt-1 relative">
-                                    <select
-                                        id="estado"
-                                        name="estado"
-                                        autoComplete="address-level2"
-                                        className="block w-full appearance-none rounded-md bg-white py-[3.5px] pr-8 pl-3 text-base text-gray-900 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                                    >
-                                        <option value="">Estado...</option>
-                                    </select>
-                                    <ChevronDownIcon
-                                        className="pointer-events-none absolute right-2 top-1.5 h-5 w-5 text-gray-500"
-                                        aria-hidden="true"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="sm:col-span-2">
-                                <label htmlFor="postal-code" className="block text-sm/8 font-medium text-gray-400">
-                                    CEP:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="postal-code"
-                                        name="postal-code"
-                                        type="text"
-                                        autoComplete="postal-code"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,4 +77,4 @@ const Form = () => (
     </div>
 );
 
-export default Form;
+export default ChallengePage;

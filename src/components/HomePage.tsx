@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion"; 
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { NavLink } from "react-router-dom";
 
 // Data de lançamento
 const targetDate = new Date("2025-06-15T00:00:00");
-
-const images = [
-    "/images/image1.png"
-];
 
 const HomePage = () => {
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -35,19 +30,13 @@ const HomePage = () => {
 
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 pt-24 pb-12 space-y-10 text-white">
-            <motion.h1
-                className="text-4xl font-bold text-center cursor-pointer"
-                initial={{ opacity: 1 }}
-                whileHover={{
-                    scale: 1.01,
-                    opacity: 0.9
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-            >
-                A Ponte: O Caminho para o conhecimento
-            </motion.h1>
+            <p className="text-5xl text-center cursor-pointer font-custom-playerfair" style={{ marginBottom: "50px" }}>
+                <span className="text-5xl">PONTES </span>
+                <span className="text-3xl">PARA A NOVA </span>
+                <span className="text-5xl">REALIDADE</span>
+            </p>
 
-            <div className="text-center">
+            <div className="text-center" style={{ marginBottom: "5px" }}>
                 <p className="text-xl mb-2">Contagem do Desafio:</p>
                 <div className="flex gap-4 text-3xl font-mono justify-center">
                     <span>{String(timeLeft.days).padStart(2, "0")}d</span>
@@ -56,31 +45,24 @@ const HomePage = () => {
                     <span>{String(timeLeft.seconds).padStart(2, "0")}s</span>
                 </div>
             </div>
-
-            <Swiper
-                modules={[Navigation]}
-                navigation
-                spaceBetween={30}
-                slidesPerView={1}
-                className="w-full max-w-3xl rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 scroll-mt-24 backdrop-blur-md"
-            >
-                {images.map((src, idx) => (
-                    <SwiperSlide key={idx}>
-                        <motion.img
-                            src={src}
-                            alt={`Slide ${idx + 1}`}
-                            className="w-full h-[400px] object-cover cursor-pointer"
-                            whileHover={{ scale: 1.05, opacity: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
             <hr></hr>
 
-            <div>
+            <div style={{ marginBottom: '75px' }}>
                 <motion.h1
-                    className="text-5xl font-bold text-center cursor-pointer"
+                    className="text-5xl text-center text-white/90 max-w-[400px] cursor-pointer font-custom-playerfair"
+                    initial={{ opacity: 1 }}
+                    whileHover={{
+                        scale: 1.2,
+                        opacity: 0.6
+                    }}
+                    transition={{ duration: 1 }}
+                >
+                    <NavLink to="/app/desafio">O MAIOR DESAFIO DE TODOS OS TEMPOS</NavLink>
+                </motion.h1>
+            </div>
+            {/* <div className="font-custom-playerfair">
+                <motion.h1
+                    className="text-5xl font-bold text-center cursor-pointer font-custom-playerfair"
                     initial={{ opacity: 1 }}
                     whileHover={{
                         scale: 1.0,
@@ -97,7 +79,7 @@ const HomePage = () => {
                     Cada capítulo foi cuidadosamente elaborado para oferecer clareza, sabedoria e inspiração, convidando você a colocar em prática valores
                     que promovem o autoconhecimento e a mudança real.
                 </p>
-            </div>
+            </div> */}
         </div>
     );
 };
