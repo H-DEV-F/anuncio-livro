@@ -29,7 +29,7 @@ const LandingPage = () => {
                         exit={{ y: 100, opacity: 0 }}
                         transition={{ duration: 0.8 }}
                         onClick={handleClick}
-                        className="px-1 py-4 text-white text-[80px] font-bold rounded-xl border border-none hover:text-white-600 transition font-custom-playerfair"
+                        className="px-1 py-4 text-white text-[80px] font-medium tracking-widest rounded-xl border border-none hover:text-white-600 transition font-custom-playerfair"
                     >
                         INICIAR
                     </motion.button>

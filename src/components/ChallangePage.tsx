@@ -1,80 +1,212 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const ChallengePage = () => (
-    <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
-        <div
-            id="contato"
-            className="w-full max-w-xl bg-black/30 p-8 rounded-2xl shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 scroll-mt-24 backdrop-blur-md"
-            style={{ marginBottom: "100px" }}>
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 font-color-white font-custom-playerfair">O MAIOR ENIGMA DE TODOS OS TEMPOS</h2>
-            <h3 className="text-2xl font-bold mb-6 text-center text-gray-800 font-color-white">Preencha o Desafio</h3>
-            <form>
-                <div className="space-y-12 font-color-white">
-                    <div className="border-b border-gray-900/10 pb-12">
+const ChallengePage = () => {
+    const [step, setStep] = useState(1);
 
-                        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div className="sm:col-span-2">
-                                <label htmlFor="first-name" className="block text-sm/8 font-medium text-gray-400">
-                                    Nome:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="first-name"
-                                        name="first-name"
-                                        type="text"
-                                        autoComplete="given-name"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    />
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        bridgeMeaning: "",
+        enigma2_1: "",
+        enigma2_2: "",
+        enigma2_3: "",
+        enigma2_4: "",
+        enigma2_5: "",
+        enigma2_6: "",
+        enigma3_1: "",
+        enigma3_2: "",
+        enigma3_3: "",
+        enigma3_4: "",
+        enigma3_5: "",
+        enigma3_6: "",
+    });
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const handleNext = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStep((prev) => prev + 1);
+    };
+
+    const handleBack = () => {
+        setStep((prev) => prev - 1);
+    };
+
+    return (
+        <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
+            <div className="w-full max-w-xl bg-black/30 p-8 rounded-2xl shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 backdrop-blur-md mb-20">
+                <h2 className="text-2xl font-bold mb-6 text-center text-white font-custom-playerfair">
+                    O MAIOR ENIGMA DE TODOS OS TEMPOS
+                </h2>
+
+                {step === 1 && (
+                    <>
+                        <h3 className="text-2xl font-bold mb-6 text-center text-white/80">Preencha o Desafio</h3>
+                        <form onSubmit={handleNext}>
+                            <div className="space-y-12 text-white">
+                                <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                    <div className="sm:col-span-2">
+                                        <label htmlFor="firstName" className="block text-sm font-medium text-gray-400">Nome:</label>
+                                        <input
+                                            id="firstName"
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="sm:col-span-4">
+                                        <label htmlFor="lastName" className="block text-sm font-medium text-gray-400">Sobrenome:</label>
+                                        <input
+                                            id="lastName"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="sm:col-span-6">
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-400">Email:</label>
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
+                                            required
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="sm:col-span-4">
-                                <label htmlFor="last-name" className="block text-sm/8 font-medium text-gray-400">
-                                    Sobrenome:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="last-name"
-                                        name="last-name"
-                                        type="text"
-                                        autoComplete="family-name"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    />
-                                </div>
+                            <div className="mt-6 flex items-center justify-end gap-x-6">
+                                <NavLink to="/app">
+                                    <button type="button" className="text-sm font-semibold text-gray-400">Voltar</button>
+                                </NavLink>
+                                <button type="submit" className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500">
+                                    Iniciar
+                                </button>
                             </div>
+                        </form>
+                    </>
+                )}
 
-                            <div className="sm:col-span-4">
-                                <label htmlFor="email" className="block text-sm/8 font-medium text-gray-400">
-                                    Email.:
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        autoComplete="email"
-                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    />
-                                </div>
-                            </div>
+                {step === 2 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">O que é a ponte?</h3>
+                        <div className="mb-6">
+                            <label htmlFor="bridgeMeaning" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                                Responda com suas palavras:
+                            </label>
+                            <textarea
+                                id="bridgeMeaning"
+                                name="bridgeMeaning"
+                                value={formData.bridgeMeaning}
+                                onChange={handleChange}
+                                rows={4}
+                                className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                required
+                            />
                         </div>
-                    </div>
-                </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500">
+                                Próximo
+                            </button>
+                        </div>
+                    </form>
+                )}
 
-                <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" className="text-sm/6 font-semibold text-gray-400">
-                        Cancel
-                    </button>
-                    <button
-                        type="submit"
-                        className="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    >
-                        Save
-                    </button>
-                </div>
-            </form>
+                {step === 3 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 1:</h3>
+                        <div className="space-y-4 mb-6">
+                            {[1, 2, 3, 4, 5, 6].map((n) => (
+                                <div key={`enigma2_${n}`} className="flex items-center gap-4">
+                                    <label
+                                        htmlFor={`enigma2_${n}`}
+                                        className="text-sm font-medium text-white/80 w-2"
+                                    >
+                                        {n}:
+                                    </label>
+                                    <input
+                                        id={`enigma2_${n}`}
+                                        name={`enigma2_${n}`}
+                                        value={formData[`enigma2_${n}` as keyof typeof formData]}
+                                        onChange={handleChange}
+                                        className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                        maxLength={999}
+                                        required
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500">
+                                Próximo
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 4 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 2:</h3>
+                        <div className="space-y-4 mb-6">
+                            {[1, 2, 3, 4, 5, 6].map((n) => (
+                                <div key={`enigma3_${n}`} className="flex items-center gap-4">
+                                    <label
+                                        htmlFor={`enigma3_${n}`}
+                                        className="text-sm font-medium text-white/80 w-2"
+                                    >
+                                        {n}:
+                                    </label>
+                                    <input
+                                        id={`enigma3_${n}`}
+                                        name={`enigma3_${n}`}
+                                        value={formData[`enigma3_${n}` as keyof typeof formData]}
+                                        onChange={handleChange}
+                                        className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                        maxLength={999}
+                                        required
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-500">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 5 && (
+                    <div className="text-white text-center space-y-6">
+                        <h3 className="text-2xl font-bold">Desafio enviado com sucesso!</h3>
+                        <p className="text-lg">Muito obrigado por participar. Em breve você receberá novidades.</p>
+                        <NavLink to="/app">
+                            <button className="text-sm font-semibold text-gray-400 underline mt-4">Voltar</button>
+                        </NavLink>
+                    </div>
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default ChallengePage;

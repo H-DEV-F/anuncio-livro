@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/navigation";
 import { NavLink } from "react-router-dom";
@@ -30,14 +30,14 @@ const HomePage = () => {
 
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 pt-24 pb-12 space-y-10 text-white">
-            <p className="text-5xl text-center cursor-pointer font-custom-playerfair" style={{ marginBottom: "50px" }}>
-                <span className="text-5xl">PONTES </span>
-                <span className="text-3xl">PARA A NOVA </span>
-                <span className="text-5xl">REALIDADE</span>
+            <p className="text-center cursor-pointer font-custom-playerfair mb-12">
+                <span className="text-[20px] sm:text-[25px] md:text-[35px] lg:text-[55px]">PONTES</span>
+                <span className="text-[15px] sm:text-[20px] md:text-[25px] lg:text-[35px] ml-4">PARA A NOVA</span>
+                <span className="text-[20px] sm:text-[25px] md:text-[35px] lg:text-[55px] ml-4">REALIDADE</span>
             </p>
 
             <div className="text-center" style={{ marginBottom: "5px" }}>
-                <p className="text-xl mb-2">Contagem do Desafio:</p>
+                <p className="text-xl mb-2">Contagem para o Desafio:</p>
                 <div className="flex gap-4 text-3xl font-mono justify-center">
                     <span>{String(timeLeft.days).padStart(2, "0")}d</span>
                     <span>{String(timeLeft.hours).padStart(2, "0")}h</span>
@@ -49,37 +49,15 @@ const HomePage = () => {
 
             <div style={{ marginBottom: '75px' }}>
                 <motion.h1
-                    className="text-6xl text-center text-white/90 max-w-[400px] cursor-pointer font-custom-playerfair"
+                    className="text-[35px] sm:text-5xl md:text-5xl lg:text-6xl text-center text-white/90 max-w-[70%] sm:max-w-[300px] md:max-w-[300px] lg:max-w-[400px] mx-auto cursor-pointer font-custom-playerfair"
                     initial={{ opacity: 1 }}
-                    whileHover={{
-                        scale: 1.2,
-                        opacity: 0.9
-                    }}
+                    whileHover={{ scale: 1.2, opacity: 0.9 }}
                     transition={{ duration: 1 }}
                 >
                     <NavLink to="/app/desafio">O MAIOR DESAFIO DE TODOS OS TEMPOS</NavLink>
                 </motion.h1>
+
             </div>
-            {/* <div className="font-custom-playerfair">
-                <motion.h1
-                    className="text-5xl font-bold text-center cursor-pointer font-custom-playerfair"
-                    initial={{ opacity: 1 }}
-                    whileHover={{
-                        scale: 1.0,
-                        opacity: 1
-                    }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                >
-                    Sobre
-                </motion.h1>
-                <br></br>
-                <p className="text-lg text-gray-500 leading-relaxed text-center max-w-4xl mx-auto px-4">
-                    Este livro é resultado de uma longa jornada de aprendizados, experiências e reflexões acumuladas ao longo dos anos. Em suas páginas,
-                    você encontrará conteúdos ricos e transformadores, com ensinamentos que visam fortalecer sua caminhada pessoal, espiritual e emocional.
-                    Cada capítulo foi cuidadosamente elaborado para oferecer clareza, sabedoria e inspiração, convidando você a colocar em prática valores
-                    que promovem o autoconhecimento e a mudança real.
-                </p>
-            </div> */}
         </div>
     );
 };
