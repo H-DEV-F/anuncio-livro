@@ -49,11 +49,11 @@ const HomePage = () => {
 
             <div style={{ marginBottom: '75px' }}>
                 <motion.h1
-                    className="text-5xl text-center text-white/90 max-w-[400px] cursor-pointer font-custom-playerfair"
+                    className="text-6xl text-center text-white/90 max-w-[400px] cursor-pointer font-custom-playerfair"
                     initial={{ opacity: 1 }}
                     whileHover={{
                         scale: 1.2,
-                        opacity: 0.6
+                        opacity: 0.9
                     }}
                     transition={{ duration: 1 }}
                 >
