@@ -14,7 +14,7 @@ const LandingPage = () => {
     }
 
     return (
-        <div className="h-screen flex items-center justify-center bg-gray-900"
+        <div className="h-screen flex items-center justify-center bg-gray-900" 
         style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/background-image.jpg')`,
             backgroundRepeat: 'no-repeat',
@@ -24,12 +24,12 @@ const LandingPage = () => {
             <AnimatePresence>
                 {!clicked && (
                     <motion.button
-                        initial={{ y: -100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -100, opacity: 0 }}
+                        initial={{ y: -100, opacity: 0, scale: 0.8 }}
+                        animate={{ y: 0, opacity: 1, scale: 1.2 }}
+                        exit={{ y: 100, opacity: 0 }}
                         transition={{ duration: 0.8 }}
                         onClick={handleClick}
-                        className="px-10 py-4 text-white text-xl font-bold rounded-xl border border-none underline hover:text-white-600 transition"
+                        className="px-1 py-4 text-white text-[80px] font-bold rounded-xl border border-none hover:text-white-600 transition font-custom-playerfair"
                     >
                         INICIAR
                     </motion.button>
