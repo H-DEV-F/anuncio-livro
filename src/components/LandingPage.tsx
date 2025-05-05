@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const LandingPage = () => {
+    const urlImage = "/images/background-image.jpg";
     const [clicked, setClicked] = useState(false)
     const [showFirstText, setShowFirstText] = useState(false)
     const [showSecondText, setShowSecondText] = useState(false)
@@ -11,29 +12,26 @@ const LandingPage = () => {
     const handleClick = () => {
         setClicked(true)
 
-        // Primeiro texto após 1s
         setTimeout(() => {
             setShowFirstText(true)
         }, 1000)
 
-        // Segundo texto após 4s (deixa o primeiro visível por 3s)
         setTimeout(() => {
             setShowFirstText(false)
             setShowSecondText(true)
         }, 4000)
 
-        // Navega após 7s (deixa o segundo visível por 3s)
         setTimeout(() => {
             setShowSecondText(false)
             navigate('/app')
-        }, 7000)
+        }, 8000)
     }
 
     return (
         <div
             className="h-screen flex items-center justify-center relative bg-gray-900"
             style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/background-image.jpg')`,
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${urlImage}')`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
