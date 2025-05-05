@@ -62,7 +62,7 @@ const LandingPage = () => {
                         transition={{ delay: 1.2, duration: 1 }}
                         className="absolute top-1/4 w-[200px] md:w-[300px] lg:w-[400px] text-center"
                     >
-                        <h1 className="text-white text-[60px] md:text-[40px] lg:text-[60px] font-bold font-custom-playerfair">
+                        <h1 className="text-white text-[30px] md:text-[40px] lg:text-[60px] font-bold font-custom-playerfair">
                             O MAIOR DESAFIO DE TODOS OS TEMPOS
                         </h1>
                     </motion.div>
@@ -79,7 +79,7 @@ const LandingPage = () => {
                         transition={{ delay: 2, duration: 1 }}
                         className="absolute top-1/4 w-[200px] md:w-[300px] lg:w-[400px] text-center"
                     >
-                        <h2 className="text-white text-[60px] md:text-[40px] lg:text-[60px] font-semibold font-custom-playerfair">
+                        <h2 className="text-white text-[30px] md:text-[40px] lg:text-[60px] font-semibold font-custom-playerfair">
                             UM PRÊMIO DE 5.000,00 REAIS
                         </h2>
                     </motion.div>
