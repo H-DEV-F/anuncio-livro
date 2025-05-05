@@ -41,7 +41,7 @@ const HomePage = () => {
                 <div className="flex gap-4 font-mono justify-center mt-5">
                     <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.days).padStart(2, "0")}d</span>
                     <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.hours).padStart(2, "0")}h</span>
-                    <span className="text-[20px] md:text-[30px]1 lg:text-[35px]">{String(timeLeft.minutes).padStart(2, "0")}m</span>
+                    <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.minutes).padStart(2, "0")}m</span>
                     <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.seconds).padStart(2, "0")}s</span>
                 </div>
             </div>
