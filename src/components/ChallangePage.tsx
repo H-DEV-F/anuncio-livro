@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import DrawingInput from "./DrawingInput";
 
 const ChallengePage = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(5);
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -41,6 +42,11 @@ const ChallengePage = () => {
         setStep((prev) => prev - 1);
     };
 
+    const handleSave = (imageData:any) => {
+        console.log('Imagem salva:', imageData);
+        // Aqui você pode enviar a imagem para o servidor ou fazer o que quiser com ela
+    };
+
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
             <div className="w-full max-w-xl bg-black/30 p-8 rounded-2xl shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 backdrop-blur-md mb-20">
@@ -50,7 +56,7 @@ const ChallengePage = () => {
 
                 {step === 1 && (
                     <>
-                        <h3 className="text-2xl font-bold mb-6 text-center text-white/80">Preencha o Desafio</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-center text-white/80">Informe seus Dados:</h3>
                         <form onSubmit={handleNext}>
                             <div className="space-y-12 text-white">
                                 <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -199,6 +205,21 @@ const ChallengePage = () => {
                 )}
 
                 {step === 5 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 2:</h3>
+                        <div className="space-y-4 mb-6">
+                            <DrawingInput onSave={handleSave} />
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 6 && (
                     <div className="text-white text-center space-y-6">
                         <h3 className="text-2xl font-bold">Desafio enviado com sucesso!</h3>
                         <p className="text-lg">Muito obrigado por participar. Em breve você receberá novidades.</p>

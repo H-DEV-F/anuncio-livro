@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-const CidadesSelect = () => {
+const SelectCity = () => {
     const [cidades, setCidades] = useState([]);
 
     useEffect(() => {
@@ -39,4 +39,4 @@ const CidadesSelect = () => {
     );
 };
 
-export default CidadesSelect;
+export default SelectCity;
