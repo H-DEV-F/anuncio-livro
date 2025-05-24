@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import DrawingInput from "./DrawingInput";
 
 const ChallengePage = () => {
-    const [step, setStep] = useState(5);
+    const [step, setStep] = useState(1);
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -19,9 +19,15 @@ const ChallengePage = () => {
         enigma3_1: "",
         enigma3_2: "",
         enigma3_3: "",
-        enigma3_4: "",
-        enigma3_5: "",
-        enigma3_6: "",
+        enigma3_a_1: "",
+        enigma3_a_2: "",
+        enigma3_a_3: "",
+        enigma3_b_1: "",
+        enigma3_b_2: "",
+        enigma3_b_3: "",
+        enigma4_1: "",
+        enigma4_2: "",
+        enigma4_3: "",
     });
 
     const handleChange = (
@@ -206,7 +212,9 @@ const ChallengePage = () => {
 
                 {step === 5 && (
                     <form onSubmit={handleNext}>
-                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 2:</h3>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Onde estamos?</h4>
+                        <span>Faça uma forma geometrica:</span>
                         <div className="space-y-4 mb-6">
                             <DrawingInput onSave={handleSave} />
                         </div>
@@ -220,6 +228,114 @@ const ChallengePage = () => {
                 )}
 
                 {step === 6 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que sou?</h4>
+                        <span className="font-color-white">A:</span>
+                        <div className="space-y-4 mb-6">
+                            {[1, 2, 3].map((n) => (
+                                <div key={`enigma3_a_${n}`} className="flex items-center gap-4">
+                                    <label
+                                        htmlFor={`enigma3_a_${n}`}
+                                        className="text-sm font-medium text-white/80 w-2"
+                                    >
+                                        {n}:
+                                    </label>
+                                    <input
+                                        id={`enigma3_a_${n}`}
+                                        name={`enigma3_a_${n}`}
+                                        value={formData[`enigma3_a_${n}` as keyof typeof formData]}
+                                        onChange={handleChange}
+                                        className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                        maxLength={999}
+                                        required
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <span className="font-color-white">B:</span>
+                        <div className="space-y-4 mb-6">
+                            {[1, 2, 3].map((n) => (
+                                <div key={`enigma3_b_${n}`} className="flex items-center gap-4">
+                                    <label
+                                        htmlFor={`enigma3_b_${n}`}
+                                        className="text-sm font-medium text-white/80 w-2"
+                                    >
+                                        {n}:
+                                    </label>
+                                    <input
+                                        id={`enigma3_b_${n}`}
+                                        name={`enigma3_b_${n}`}
+                                        value={formData[`enigma3_b_${n}` as keyof typeof formData]}
+                                        onChange={handleChange}
+                                        className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                        maxLength={999}
+                                        required
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 7 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Como entender a realidade?</h4>
+                        <div className="space-y-4 mb-6">
+                            {[1, 2, 3].map((n) => (
+                                <div key={`enigma4_${n}`} className="flex items-center gap-4">
+                                    <label
+                                        htmlFor={`enigma4_${n}`}
+                                        className="text-sm font-medium text-white/80 w-2"
+                                    >
+                                        {n}:
+                                    </label>
+                                    <input
+                                        id={`enigma4_${n}`}
+                                        name={`enigma4_${n}`}
+                                        value={formData[`enigma4_${n}` as keyof typeof formData]}
+                                        onChange={handleChange}
+                                        className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                        maxLength={999}
+                                        required
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 8 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Como é a realidade?</h4>
+                        <span>Faça uma forma geometrica:</span>
+                        <div className="space-y-4 mb-6">
+                            <DrawingInput onSave={handleSave} />
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 9 && (
                     <div className="text-white text-center space-y-6">
                         <h3 className="text-2xl font-bold">Desafio enviado com sucesso!</h3>
                         <p className="text-lg">Muito obrigado por participar. Em breve você receberá novidades.</p>
