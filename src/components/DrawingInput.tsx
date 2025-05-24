@@ -17,6 +17,10 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
     const initCanvas = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
+        const { width, height } = canvas.getBoundingClientRect();
+        canvas.width = width;
+        canvas.height = height;
         
         const context = canvas.getContext('2d');
         if (!context) return;
@@ -234,35 +238,33 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
                 </div>
             </div>
             <div className="flex flex-wrap gap-4 justify-between mb-6 text-white text-sm">
-                <div className="flex flex-col font-color-white">
-                    <button
+                {/* <div className="flex flex-col">
+                    <button type="button" className="rounded-md border border-white-600 px-4 py-2 text-sm font-semibold text-white bg-transparent hover:bg-gray-600 hover:text-black-600 transition-colors"
                         onClick={undoDrawing}
                         disabled={historyIndex <= 0}
                     >
                         Desfazer
                     </button>
                 </div>
-                <div className="flex flex-col font-color-white">
-                    <button
+                <div className="flex flex-col">
+                    <button type="button" className="rounded-md border border-white-600 px-4 py-2 text-sm font-semibold text-white bg-transparent hover:bg-gray-600 hover:text-black-600 transition-colors"
                         onClick={redoDrawing}
                         disabled={historyIndex >= drawingHistory.length - 1}
                     >
                         Refazer
                     </button>
-                </div>
+                </div> */}
 
                 <div className="flex flex-col font-color-white">
-                    <button className="font-color-white" onClick={clearCanvas}>Limpar</button>
+                    <button type="button" className="rounded-md border border-white-600 px-4 py-2 text-sm font-semibold text-white bg-transparent hover:bg-gray-600 hover:text-black-600 transition-colors" onClick={clearCanvas}>Limpar</button>
                 </div>
                 <div className="flex flex-col font-color-white">
-                    <button className="font-color-white" onClick={saveDrawing}>Salvar Desenho</button>
+                    <button type="button" className="rounded-md border border-white-600 px-4 py-2 text-sm font-semibold text-white bg-transparent hover:bg-gray-600 hover:text-black-600 transition-colors" onClick={saveDrawing}>Salvar Desenho</button>
                 </div>
             </div>
 
             <canvas
                 ref={canvasRef}
-                width={500}
-                height={300}
                 onMouseDown={startDrawing}
                 onMouseMove={draw}
                 onMouseUp={stopDrawing}
@@ -270,6 +272,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
                 onTouchStart={startDrawing}
                 onTouchMove={draw}
                 onTouchEnd={stopDrawing}
+                className="w-full max-w-full aspect-video bg-white border border-black"
                 style={{
                     border: '1px solid #000',
                     backgroundColor: backgroundColor,
