@@ -138,7 +138,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Próximo
+                                Proximo
                             </button>
                         </div>
                     </form>
@@ -171,7 +171,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Próximo
+                                Proximo
                             </button>
                         </div>
                     </form>
@@ -204,7 +204,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Enviar
+                                Proximo
                             </button>
                         </div>
                     </form>
@@ -221,7 +221,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Enviar
+                                Proximo
                             </button>
                         </div>
                     </form>
@@ -278,7 +278,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Enviar
+                                Proximo
                             </button>
                         </div>
                     </form>
@@ -312,7 +312,7 @@ const ChallengePage = () => {
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
-                                Enviar
+                                Proximo
                             </button>
                         </div>
                     </form>
