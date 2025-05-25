@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import DrawingInput from "./DrawingInput";
 
+const targetDate = new Date("2026-06-01T00:00:00");
+
 const ChallengePage = () => {
     const [step, setStep] = useState(1);
+    const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTimeLeft(getTimeLeft());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
         bridgeMeaning: "",
+        whatIsReality: "",
         enigma2_1: "",
         enigma2_2: "",
         enigma2_3: "",
@@ -28,6 +39,8 @@ const ChallengePage = () => {
         enigma4_1: "",
         enigma4_2: "",
         enigma4_3: "",
+        imageDrawing1: "",
+        imageDrawing2: ""
     });
 
     const handleChange = (
@@ -48,10 +61,30 @@ const ChallengePage = () => {
         setStep((prev) => prev - 1);
     };
 
-    const handleSave = (imageData:any) => {
-        console.log('Imagem salva:', imageData);
-        // Aqui você pode enviar a imagem para o servidor ou fazer o que quiser com ela
+    const handleSave = (imageData: string) => {
+        if (step === 5) {
+            setFormData((prev) => ({
+                ...prev,
+                imageDrawing1: imageData,
+            }));
+        } else if (step === 8) {
+            setFormData((prev) => ({
+                ...prev,
+                imageDrawing2: imageData,
+            }));
+        }
     };
+
+    function getTimeLeft() {
+            const now = new Date();
+            const diff = targetDate.getTime() - now.getTime();
+            const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+            const days = Math.floor(totalSeconds / (60 * 60 * 24));
+            const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+            const minutes = Math.floor((totalSeconds / 60) % 60);
+            const seconds = totalSeconds % 60;
+            return { days, hours, minutes, seconds };
+    }
 
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
@@ -214,6 +247,20 @@ const ChallengePage = () => {
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Onde estamos?</h4>
+                        <div className="mb-6">
+                            <label htmlFor="whatIsReality" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                                Resposta:
+                            </label>
+                            <textarea
+                                id="whatIsReality"
+                                name="whatIsReality"
+                                value={formData.whatIsReality}
+                                onChange={handleChange}
+                                rows={4}
+                                className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
                         <span>Faça uma forma geometrica:</span>
                         <div className="space-y-4 mb-6">
                             <DrawingInput onSave={handleSave} />
@@ -287,7 +334,7 @@ const ChallengePage = () => {
                 {step === 7 && (
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
-                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Como entender a realidade?</h4>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Oque é a realidade?</h4>
                         <div className="space-y-4 mb-6">
                             {[1, 2, 3].map((n) => (
                                 <div key={`enigma4_${n}`} className="flex items-center gap-4">
@@ -339,6 +386,20 @@ const ChallengePage = () => {
                     <div className="text-white text-center space-y-6">
                         <h3 className="text-2xl font-bold">Desafio enviado com sucesso!</h3>
                         <p className="text-lg">Muito obrigado por participar. Em breve você receberá novidades.</p>
+                        <p className="text-lg">Digno ganho poder.
+                            Bebo a transformação vejo um outro ser.
+                            De onde vim e para onde irei.
+                            Confio na decisão, me tornei um rei.
+                        </p>
+                        <div className="text-center" style={{ marginBottom: "5px" }}>
+                            <p className="text-[20px] md:text-[25px] lg:text-[30px] mb-2">Contagem até o fim do desafio:</p>
+                            <div className="flex gap-4 font-mono justify-center mt-5">
+                                <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.days).padStart(2, "0")}d</span>
+                                <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.hours).padStart(2, "0")}h</span>
+                                <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.minutes).padStart(2, "0")}m</span>
+                                <span className="text-[20px] md:text-[30px] lg:text-[35px]">{String(timeLeft.seconds).padStart(2, "0")}s</span>
+                            </div>
+                        </div>
                         <NavLink to="/app">
                             <button className="text-sm font-semibold text-gray-400 underline mt-4">Voltar</button>
                         </NavLink>

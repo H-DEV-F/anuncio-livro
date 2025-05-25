@@ -21,7 +21,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         const { width, height } = canvas.getBoundingClientRect();
         canvas.width = width;
         canvas.height = height;
-        
+
         const context = canvas.getContext('2d');
         if (!context) return;
 
@@ -53,51 +53,51 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         setHistoryIndex(drawingHistory.length);
     };
 
-    const undoDrawing = () => {
-        if (historyIndex <= 0) return; // Não há nada para desfazer
+    // const undoDrawing = () => {
+    //     if (historyIndex <= 0) return; // Não há nada para desfazer
 
-        const newIndex = historyIndex - 1;
-        setHistoryIndex(newIndex);
+    //     const newIndex = historyIndex - 1;
+    //     setHistoryIndex(newIndex);
 
-        const canvas = canvasRef.current;
-        if (!canvas) return;
+    //     const canvas = canvasRef.current;
+    //     if (!canvas) return;
 
-        const context = canvas.getContext('2d');
-        if (!context) return;
+    //     const context = canvas.getContext('2d');
+    //     if (!context) return;
 
-        const img = new Image();
+    //     const img = new Image();
 
-        img.onload = () => {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(img, 0, 0);
-        };
+    //     img.onload = () => {
+    //         context.clearRect(0, 0, canvas.width, canvas.height);
+    //         context.drawImage(img, 0, 0);
+    //     };
 
-        img.src = drawingHistory[newIndex];
-    };
+    //     img.src = drawingHistory[newIndex];
+    // };
 
-    const redoDrawing = () => {
-        if (historyIndex >= drawingHistory.length - 1) return; // Não há nada para refazer
+    // const redoDrawing = () => {
+    //     if (historyIndex >= drawingHistory.length - 1) return; // Não há nada para refazer
 
-        const newIndex = historyIndex + 1;
-        setHistoryIndex(newIndex);
+    //     const newIndex = historyIndex + 1;
+    //     setHistoryIndex(newIndex);
 
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        
-        const context = canvas.getContext('2d');
-        if (!context) return;
+    //     const canvas = canvasRef.current;
+    //     if (!canvas) return;
 
-        const img = new Image();
+    //     const context = canvas.getContext('2d');
+    //     if (!context) return;
 
-        img.onload = () => {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(img, 0, 0);
-        };
+    //     const img = new Image();
 
-        img.src = drawingHistory[newIndex];
-    };
+    //     img.onload = () => {
+    //         context.clearRect(0, 0, canvas.width, canvas.height);
+    //         context.drawImage(img, 0, 0);
+    //     };
 
-    const getCoordinates = (e:any): { x: number, y: number } | undefined => {
+    //     img.src = drawingHistory[newIndex];
+    // };
+
+    const getCoordinates = (e: any): { x: number, y: number } | undefined => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -113,7 +113,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         };
     };
 
-    const startDrawing = (e:any) => {
+    const startDrawing = (e: any) => {
         e.preventDefault(); // Previne comportamento padrão para touch
 
         const canvas = canvasRef.current;
@@ -123,7 +123,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         if (!context) return;
 
         const coords = getCoordinates(e);
-        if(!coords) return;
+        if (!coords) return;
 
         const { x, y } = coords;
 
@@ -132,7 +132,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         setIsDrawing(true);
     };
 
-    const draw = (e:any) => {
+    const draw = (e: any) => {
         e.preventDefault(); // Previne comportamento padrão para touch
 
         if (!isDrawing) return;
@@ -144,7 +144,7 @@ const DrawingInput = ({ onSave }: { onSave: (imageData: string) => void }) => {
         if (!context) return;
 
         const coords = getCoordinates(e);
-        if(!coords) return;
+        if (!coords) return;
 
         const { x, y } = coords;
 
