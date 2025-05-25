@@ -9,7 +9,7 @@ const HomePage = () => {
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4 pt-10 pb-12 space-y-10 text-white">
             <p className="text-center cursor-pointer font-custom-playerfair mb-12">
                 <span className="text-[22px] sm:text-[25px] md:text-[35px] lg:text-[55px]">PONTES</span>
-                <span className="text-[17px] sm:text-[20px] md:text-[25px] lg:text-[35px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">PARA A NOVA</span>
+                <span className="text-[17px] sm:text-[20px] md:text-[25px] lg:text-[35px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">PARA NOVA</span>
                 <span className="text-[22px] sm:text-[25px] md:text-[35px] lg:text-[55px] sm:ml-2 ml-1.5 md:ml-2 lg:ml-4">REALIDADE</span>
             </p>
             <hr></hr>

@@ -5,7 +5,7 @@ import DrawingInput from "./DrawingInput";
 const targetDate = new Date("2026-06-01T00:00:00");
 
 const ChallengePage = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(8);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const ChallengePage = () => {
         email: "",
         bridgeMeaning: "",
         whatIsReality: "",
+        whatWeAreFound: "",
         enigma2_1: "",
         enigma2_2: "",
         enigma2_3: "",
@@ -367,8 +368,23 @@ const ChallengePage = () => {
 
                 {step === 8 && (
                     <form onSubmit={handleNext}>
-                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
-                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Como é a realidade?</h4>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma Final:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que encontramos?</h4>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Onde estamos?</h4>
+                        <div className="mb-6">
+                            <label htmlFor="whatWeAreFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                                Resposta:
+                            </label>
+                            <textarea
+                                id="whatWeAreFound"
+                                name="whatWeAreFound"
+                                value={formData.whatWeAreFound}
+                                onChange={handleChange}
+                                rows={4}
+                                className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
                         <span>Faça uma forma geometrica:</span>
                         <div className="space-y-4 mb-6">
                             <DrawingInput onSave={handleSave} />
