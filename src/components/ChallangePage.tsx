@@ -370,7 +370,6 @@ const ChallengePage = () => {
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma Final:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que encontramos?</h4>
-                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Onde estamos?</h4>
                         <div className="mb-6">
                             <label htmlFor="whatWeAreFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
                                 Resposta:
