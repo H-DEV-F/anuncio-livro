@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -93,7 +93,13 @@ const LandingPage = () => {
                 transition={{ delay: 1, duration: 1.5 }}
                 className="absolute bottom-20 left-6 px-4 py-2 text-white text-[20px] font-medium tracking-widest border border-none transition hover:text-white-600 font-custom-playerfair"
             >
-                Loja
+                <a
+                    href="https://www.amazon.com.br/dp/B0F9TT2R9R?dplnkId=06278201-8642-4a7c-983e-c31a752778b2&nodl=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Loja
+                </a>
             </motion.button>
 
             <motion.button
