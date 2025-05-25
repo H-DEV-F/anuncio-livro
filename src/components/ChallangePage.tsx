@@ -5,7 +5,7 @@ import DrawingInput from "./DrawingInput";
 const targetDate = new Date("2026-06-01T00:00:00");
 
 const ChallengePage = () => {
-    const [step, setStep] = useState(8);
+    const [step, setStep] = useState(9);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
     useEffect(() => {
@@ -41,7 +41,8 @@ const ChallengePage = () => {
         enigma4_2: "",
         enigma4_3: "",
         imageDrawing1: "",
-        imageDrawing2: ""
+        imageDrawing2: "",
+        imageDrawing3: ""
     });
 
     const handleChange = (
@@ -68,23 +69,28 @@ const ChallengePage = () => {
                 ...prev,
                 imageDrawing1: imageData,
             }));
-        } else if (step === 8) {
+        } else if (step === 6) {
             setFormData((prev) => ({
                 ...prev,
                 imageDrawing2: imageData,
+            }));
+        } else if (step === 9) {
+            setFormData((prev) => ({
+                ...prev,
+                imageDrawing3: imageData,
             }));
         }
     };
 
     function getTimeLeft() {
-            const now = new Date();
-            const diff = targetDate.getTime() - now.getTime();
-            const totalSeconds = Math.max(0, Math.floor(diff / 1000));
-            const days = Math.floor(totalSeconds / (60 * 60 * 24));
-            const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
-            const minutes = Math.floor((totalSeconds / 60) % 60);
-            const seconds = totalSeconds % 60;
-            return { days, hours, minutes, seconds };
+        const now = new Date();
+        const diff = targetDate.getTime() - now.getTime();
+        const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+        const days = Math.floor(totalSeconds / (60 * 60 * 24));
+        const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+        const minutes = Math.floor((totalSeconds / 60) % 60);
+        const seconds = totalSeconds % 60;
+        return { days, hours, minutes, seconds };
     }
 
     return (
@@ -262,8 +268,8 @@ const ChallengePage = () => {
                                 required
                             />
                         </div>
-                        <span>Faça uma forma geometrica:</span>
-                        <div className="space-y-4 mb-6">
+                        <span className="font-color-white">Faça uma forma geométrica:</span>
+                        <div className="space-y-4 mb-6 mt-5">
                             <DrawingInput onSave={handleSave} />
                         </div>
                         <div className="flex justify-between">
@@ -323,6 +329,10 @@ const ChallengePage = () => {
                                 </div>
                             ))}
                         </div>
+                        <span className="font-color-white mb-5">Faça uma forma geométrica:</span>
+                        <div className="space-y-4 mb-6 mt-5">
+                            <DrawingInput onSave={handleSave} />
+                        </div>
                         <div className="flex justify-between">
                             <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
                             <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
@@ -335,7 +345,34 @@ const ChallengePage = () => {
                 {step === 7 && (
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
-                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Oque é a realidade?</h4>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que entender a realidade?</h4>
+                        <div className="mb-6">
+                            <label htmlFor="whatWeAreFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                                Resposta:
+                            </label>
+                            <textarea
+                                id="whatWeAreFound"
+                                name="whatWeAreFound"
+                                value={formData.whatWeAreFound}
+                                onChange={handleChange}
+                                rows={4}
+                                className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                        <div className="flex justify-between">
+                            <button type="button" onClick={handleBack} className="text-sm font-semibold text-gray-400">Voltar</button>
+                            <button type="submit" className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 bg-transparent hover:bg-blue-600 hover:text-white transition-colors">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                )}
+
+                {step === 8 && (
+                    <form onSubmit={handleNext}>
+                        <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que é a realidade?</h4>
                         <div className="space-y-4 mb-6">
                             {[1, 2, 3].map((n) => (
                                 <div key={`enigma4_${n}`} className="flex items-center gap-4">
@@ -366,7 +403,7 @@ const ChallengePage = () => {
                     </form>
                 )}
 
-                {step === 8 && (
+                {step === 9 && (
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma Final:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que encontramos?</h4>
@@ -384,8 +421,8 @@ const ChallengePage = () => {
                                 required
                             />
                         </div>
-                        <span>Faça uma forma geometrica:</span>
-                        <div className="space-y-4 mb-6">
+                        <span className="font-color-white">Faça uma forma geométrica:</span>
+                        <div className="space-y-4 mb-6 mt-5">
                             <DrawingInput onSave={handleSave} />
                         </div>
                         <div className="flex justify-between">
@@ -397,14 +434,14 @@ const ChallengePage = () => {
                     </form>
                 )}
 
-                {step === 9 && (
+                {step === 10 && (
                     <div className="text-white text-center space-y-6">
                         <h3 className="text-2xl font-bold">Desafio enviado com sucesso!</h3>
                         <p className="text-lg">Muito obrigado por participar. Em breve você receberá novidades.</p>
-                        <p className="text-lg">Digno ganho poder.
+                        <p className="text-lg font-bold">"Digno ganho poder.
                             Bebo a transformação vejo um outro ser.
                             De onde vim e para onde irei.
-                            Confio na decisão, me tornei um rei.
+                            Confio na decisão, me tornei um rei."
                         </p>
                         <div className="text-center" style={{ marginBottom: "5px" }}>
                             <p className="text-[20px] md:text-[25px] lg:text-[30px] mb-2">Contagem até o fim do desafio:</p>
