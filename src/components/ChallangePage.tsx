@@ -5,7 +5,7 @@ import DrawingInput from "./DrawingInput";
 const targetDate = new Date("2026-06-01T00:00:00");
 
 const ChallengePage = () => {
-    const [step, setStep] = useState(9);
+    const [step, setStep] = useState(1);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
     useEffect(() => {
