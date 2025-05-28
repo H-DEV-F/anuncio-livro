@@ -20,8 +20,9 @@ const ChallengePage = () => {
         lastName: "",
         email: "",
         bridgeMeaning: "",
-        whatIsReality: "",
-        whatWeAreFound: "",
+        whatItIsReality: "",
+        whereAreWe: "",
+        whatWeFound: "",
         enigma2_1: "",
         enigma2_2: "",
         enigma2_3: "",
@@ -255,13 +256,13 @@ const ChallengePage = () => {
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Onde estamos?</h4>
                         <div className="mb-6">
-                            <label htmlFor="whatIsReality" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                            <label htmlFor="whereAreWe" className="block text-sm font-medium text-white/80 mb-2 text-left">
                                 Resposta:
                             </label>
                             <textarea
-                                id="whatIsReality"
-                                name="whatIsReality"
-                                value={formData.whatIsReality}
+                                id="whereAreWe"
+                                name="whereAreWe"
+                                value={formData.whereAreWe}
                                 onChange={handleChange}
                                 rows={4}
                                 className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
@@ -347,13 +348,13 @@ const ChallengePage = () => {
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que entender a realidade?</h4>
                         <div className="mb-6">
-                            <label htmlFor="whatWeAreFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                            <label htmlFor="whatItIsReality" className="block text-sm font-medium text-white/80 mb-2 text-left">
                                 Resposta:
                             </label>
                             <textarea
-                                id="whatWeAreFound"
-                                name="whatWeAreFound"
-                                value={formData.whatWeAreFound}
+                                id="whatItIsReality"
+                                name="whatItIsReality"
+                                value={formData.whatItIsReality}
                                 onChange={handleChange}
                                 rows={4}
                                 className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
@@ -408,13 +409,13 @@ const ChallengePage = () => {
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma Final:</h3>
                         <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que encontramos?</h4>
                         <div className="mb-6">
-                            <label htmlFor="whatWeAreFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                            <label htmlFor="whatWeFound" className="block text-sm font-medium text-white/80 mb-2 text-left">
                                 Resposta:
                             </label>
                             <textarea
-                                id="whatWeAreFound"
-                                name="whatWeAreFound"
-                                value={formData.whatWeAreFound}
+                                id="whatWeFound"
+                                name="whatWeFound"
+                                value={formData.whatWeFound}
                                 onChange={handleChange}
                                 rows={4}
                                 className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
