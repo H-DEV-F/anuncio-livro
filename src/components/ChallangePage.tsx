@@ -16,22 +16,25 @@ const ChallengePage = () => {
     }, []);
 
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: "Henrique",
+        lastName: "Freire",
+        email: "freirehp@gmail.com",
         bridgeMeaning: "",
-        whatItIsReality: "",
+        howToUnderstandReality: "",
         whereAreWe: "",
         whatWeFound: "",
+        enigma_1: "",
+        enigma_2: "",
+        enigma_3: "",
+        enigma_4: "",
+        enigma_5: "",
+        enigma_6: "",
         enigma2_1: "",
         enigma2_2: "",
         enigma2_3: "",
         enigma2_4: "",
         enigma2_5: "",
         enigma2_6: "",
-        enigma3_1: "",
-        enigma3_2: "",
-        enigma3_3: "",
         enigma3_a_1: "",
         enigma3_a_2: "",
         enigma3_a_3: "",
@@ -58,13 +61,18 @@ const ChallengePage = () => {
     const handleNext = (e: React.FormEvent) => {
         e.preventDefault();
         setStep((prev) => prev + 1);
+
+        if(step === 9)
+        {
+            handleSubmit();
+        }
     };
 
     const handleBack = () => {
         setStep((prev) => prev - 1);
     };
 
-    const handleSave = (imageData: string) => {
+    const handleSave = async (imageData: string) => {
         if (step === 5) {
             setFormData((prev) => ({
                 ...prev,
@@ -82,6 +90,31 @@ const ChallengePage = () => {
             }));
         }
     };
+
+    const handleSubmit = async () =>
+    {
+        try {
+            const response = await fetch('http://localhost:8080/documents', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            if (!response.ok) {
+                throw new Error('Erro ao enviar os dados');
+            }
+            else
+                alert('Desafio enviado com sucesso.');
+    
+            setStep(10);
+        } catch (error) {
+            console.error('Erro detalhado:', error);
+            alert('Houve um erro ao enviar o desafio. Tente novamente mais tarde.');
+        }
+    }
+    
 
     function getTimeLeft() {
         const now = new Date();
@@ -190,17 +223,17 @@ const ChallengePage = () => {
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 1:</h3>
                         <div className="space-y-4 mb-6">
                             {[1, 2, 3, 4, 5, 6].map((n) => (
-                                <div key={`enigma2_${n}`} className="flex items-center gap-4">
+                                <div key={`enigma_${n}`} className="flex items-center gap-4">
                                     <label
-                                        htmlFor={`enigma2_${n}`}
+                                        htmlFor={`enigma_${n}`}
                                         className="text-sm font-medium text-white/80 w-2"
                                     >
                                         {n}:
                                     </label>
                                     <input
-                                        id={`enigma2_${n}`}
-                                        name={`enigma2_${n}`}
-                                        value={formData[`enigma2_${n}` as keyof typeof formData]}
+                                        id={`enigma_${n}`}
+                                        name={`enigma_${n}`}
+                                        value={formData[`enigma_${n}` as keyof typeof formData]}
                                         onChange={handleChange}
                                         className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
                                         maxLength={999}
@@ -223,17 +256,17 @@ const ChallengePage = () => {
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 2:</h3>
                         <div className="space-y-4 mb-6">
                             {[1, 2, 3, 4, 5, 6].map((n) => (
-                                <div key={`enigma3_${n}`} className="flex items-center gap-4">
+                                <div key={`enigma2_${n}`} className="flex items-center gap-4">
                                     <label
-                                        htmlFor={`enigma3_${n}`}
+                                        htmlFor={`enigma2_${n}`}
                                         className="text-sm font-medium text-white/80 w-2"
                                     >
                                         {n}:
                                     </label>
                                     <input
-                                        id={`enigma3_${n}`}
-                                        name={`enigma3_${n}`}
-                                        value={formData[`enigma3_${n}` as keyof typeof formData]}
+                                        id={`enigma2_${n}`}
+                                        name={`enigma2_${n}`}
+                                        value={formData[`enigma2_${n}` as keyof typeof formData]}
                                         onChange={handleChange}
                                         className="flex-1 rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
                                         maxLength={999}
@@ -346,15 +379,15 @@ const ChallengePage = () => {
                 {step === 7 && (
                     <form onSubmit={handleNext}>
                         <h3 className="text-xl font-bold mb-6 text-white/80 text-center">Enigma 3:</h3>
-                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">O que entender a realidade?</h4>
+                        <h4 className="text-xl font-bold mb-6 text-white/80 text-center">Como entender a realidade?</h4>
                         <div className="mb-6">
-                            <label htmlFor="whatItIsReality" className="block text-sm font-medium text-white/80 mb-2 text-left">
+                            <label htmlFor="howToUnderstandReality" className="block text-sm font-medium text-white/80 mb-2 text-left">
                                 Resposta:
                             </label>
                             <textarea
-                                id="whatItIsReality"
-                                name="whatItIsReality"
-                                value={formData.whatItIsReality}
+                                id="howToUnderstandReality"
+                                name="howToUnderstandReality"
+                                value={formData.howToUnderstandReality}
                                 onChange={handleChange}
                                 rows={4}
                                 className="w-full rounded-md px-3 py-2 text-gray-900 text-base bg-white outline-gray-300 focus:outline-indigo-600"
