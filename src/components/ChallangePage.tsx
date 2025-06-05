@@ -49,6 +49,12 @@ const ChallengePage = () => {
         imageDrawing3: ""
     });
 
+    const [drawingsValidated, setDrawingsValidated] = useState({
+        imageDrawing1: false,
+        imageDrawing2: false,
+        imageDrawing3: false
+    });
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -60,12 +66,14 @@ const ChallengePage = () => {
 
     const handleNext = (e: React.FormEvent) => {
         e.preventDefault();
-        setStep((prev) => prev + 1);
 
-        if(step === 9)
-        {
-            handleSubmit();
+        if ([5, 6, 9].includes(step) && !validateDrawings()) {
+            return alert("Por favor, complete a forma geometrica e clique em salvar, antes de prosseguir.");
         }
+
+        setStep(prev => prev + 1);
+
+        step === 9 && handleSubmit();
     };
 
     const handleBack = () => {
@@ -78,21 +86,30 @@ const ChallengePage = () => {
                 ...prev,
                 imageDrawing1: imageData,
             }));
+            setDrawingsValidated(prev => ({ ...prev, imageDrawing1: !!imageData }));
         } else if (step === 6) {
             setFormData((prev) => ({
                 ...prev,
                 imageDrawing2: imageData,
             }));
+            setDrawingsValidated(prev => ({ ...prev, imageDrawing2: !!imageData }));
         } else if (step === 9) {
             setFormData((prev) => ({
                 ...prev,
                 imageDrawing3: imageData,
             }));
+            setDrawingsValidated(prev => ({ ...prev, imageDrawing3: !!imageData }));
         }
     };
 
-    const handleSubmit = async () =>
-    {
+    const validateDrawings = () => {
+        if (step === 5 && !formData.imageDrawing1) return false;
+        if (step === 6 && !formData.imageDrawing2) return false;
+        if (step === 9 && !formData.imageDrawing3) return false;
+        return true;
+    };
+
+    const handleSubmit = async () => {
         try {
             const response = await fetch('http://localhost:8080/documents', {
                 method: 'POST',
@@ -101,20 +118,20 @@ const ChallengePage = () => {
                 },
                 body: JSON.stringify(formData)
             });
-    
+
             if (!response.ok) {
                 throw new Error('Erro ao enviar os dados');
             }
             else
                 alert('Desafio enviado com sucesso.');
-    
+
             setStep(10);
         } catch (error) {
             console.error('Erro detalhado:', error);
             alert('Houve um erro ao enviar o desafio. Tente novamente mais tarde.');
         }
     }
-    
+
 
     function getTimeLeft() {
         const now = new Date();
