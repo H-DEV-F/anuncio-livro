@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import DrawingInput from "./DrawingInput";
 
 const targetDate = new Date("2026-06-01T00:00:00");
+const anuncioApi = "https://anuncio-livro-api.onrender.com";
 
 const validateCPF = (cpf: string): boolean => {
     cpf = cpf.replace(/\D/g, '');
@@ -61,10 +62,10 @@ const ChallengePage = () => {
     }, []);
 
     const [formData, setFormData] = useState({
-        firstName: "Henrique",
-        lastName: "Freire",
+        firstName: "",
+        lastName: "",
         document: "",
-        email: "freirehp@gmail.com",
+        email: "",
         bridgeMeaning: "",
         howToUnderstandReality: "",
         whereAreWe: "",
@@ -117,16 +118,31 @@ const ChallengePage = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleNext = (e: React.FormEvent) => {
+    const handleNext = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!validateForm())
-        {
+        if (!validateForm()) {
             alert("Por favor, informe um cpf valido.");
             return;
         }
 
-        if ([5, 6, 9].includes(step) && !validateDrawings()) {
+        if ([1].includes(step)) {
+            formData.document = formData.document.replace(/\D/g, '');
+
+            await fetch(`${anuncioApi}/clients`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    document: formData.document,
+                    email: formData.email,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName
+                })
+            });
+        }
+        else if ([5, 6, 9].includes(step) && !validateDrawings()) {
             return alert("Por favor, complete a forma geometrica e clique em salvar, antes de prosseguir.");
         }
 
@@ -150,7 +166,7 @@ const ChallengePage = () => {
                 ...prev,
                 [name]: formattedValue,
             }));
-            
+
             if (errors.document) {
                 setErrors(prev => ({ ...prev, document: '' }));
             }
@@ -193,21 +209,40 @@ const ChallengePage = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:8080/documents', {
-                method: 'POST',
+
+            if (await fetch(`${anuncioApi}/challengers/${formData.document}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao enviar os dados');
+                }
+            })) {
+                alert('Você já concluiu o desafio, por favor, aguarde o resultado.');
             }
-            else
-                alert('Desafio enviado com sucesso.');
+            else {
+                await fetch(`${anuncioApi}/challengers`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
 
-            setStep(10);
+                const response = await fetch(`${anuncioApi}/documents`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar os dados');
+                }
+                else
+                    alert('Desafio enviado com sucesso.');
+
+                setStep(10);
+            }
         } catch (error) {
             console.error('Erro detalhado:', error);
             alert('Houve um erro ao enviar o desafio. Tente novamente mais tarde.');
