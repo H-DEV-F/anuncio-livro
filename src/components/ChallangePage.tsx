@@ -53,6 +53,7 @@ const ChallengePage = () => {
     const [step, setStep] = useState(1);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -127,20 +128,33 @@ const ChallengePage = () => {
         }
 
         if ([1].includes(step)) {
-            formData.document = formData.document.replace(/\D/g, '');
+            try {
+                // Ativa o loading antes da requisição
+                setLoading(true); // Supondo que você está usando React com useState
 
-            await fetch(`${anuncioApi}/clients`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    document: formData.document,
-                    email: formData.email,
-                    firstName: formData.firstName,
-                    lastName: formData.lastName
-                })
-            });
+                formData.document = formData.document.replace(/\D/g, '');
+
+                await fetch(`${anuncioApi}/clients`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        document: formData.document,
+                        email: formData.email,
+                        firstName: formData.firstName,
+                        lastName: formData.lastName
+                    })
+                });
+
+                // Desativa o loading após a requisição ser concluída
+                setLoading(false);
+            } catch (error) {
+                // Desativa o loading em caso de erro
+                setLoading(false);
+                console.error('Erro na requisição:', error);
+                // Você pode adicionar tratamento de erro adicional aqui
+            }
         }
         else if ([5, 6, 9].includes(step) && !validateDrawings()) {
             return alert("Por favor, complete a forma geometrica e clique em salvar, antes de prosseguir.");
@@ -209,6 +223,8 @@ const ChallengePage = () => {
 
     const handleSubmit = async () => {
         try {
+            setLoading(true);
+            
             const existChallenger = await fetch(`${anuncioApi}/challengers/${formData.document}`, {
                 method: 'GET',
                 headers: {
@@ -241,10 +257,14 @@ const ChallengePage = () => {
                 }
                 else
                     alert('Desafio enviado com sucesso.');
-
+                
                 setStep(10);
             }
+
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
+            
             console.error('Erro detalhado:', error);
             alert('Houve um erro ao enviar o desafio. Tente novamente mais tarde.');
         }
@@ -264,6 +284,11 @@ const ChallengePage = () => {
 
     return (
         <div className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-12">
+            {loading && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="text-white text-xl">Carregando...</div>
+                </div>
+            )}
             <div className="w-full max-w-xl bg-black/30 p-8 rounded-2xl shadow-[0_4px_30px_rgba(59,130,246,0.2)] border border-blue-300/10 backdrop-blur-md mb-20">
                 <h2 className="text-2xl font-bold mb-6 text-center text-white font-custom-playerfair">
                     O MAIOR ENIGMA DE TODOS OS TEMPOS
