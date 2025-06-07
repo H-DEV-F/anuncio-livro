@@ -4,9 +4,54 @@ import DrawingInput from "./DrawingInput";
 
 const targetDate = new Date("2026-06-01T00:00:00");
 
+const validateCPF = (cpf: string): boolean => {
+    cpf = cpf.replace(/\D/g, '');
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+    let sum = 0;
+    let remainder;
+
+    // Valida primeiro dígito verificador
+    for (let i = 1; i <= 9; i++) {
+        sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    }
+    remainder = (sum * 10) % 11;
+
+    if ((remainder === 10) || (remainder === 11)) remainder = 0;
+    if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+
+    sum = 0;
+    // Valida segundo dígito verificador
+    for (let i = 1; i <= 10; i++) {
+        sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    }
+    remainder = (sum * 10) % 11;
+
+    if ((remainder === 10) || (remainder === 11)) remainder = 0;
+    if (remainder !== parseInt(cpf.substring(10, 11))) return false;
+
+    return true;
+};
+
+const formatCPF = (value: string) => {
+    if (!value) return "";
+
+    // Remove tudo que não é dígito
+    const numericValue = value.replace(/\D/g, '');
+
+    // Aplica a formatação do CPF (XXX.XXX.XXX-XX)
+    return numericValue
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1');
+};
+
 const ChallengePage = () => {
     const [step, setStep] = useState(1);
     const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+    const [errors, setErrors] = useState<Record<string, string>>({});
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -18,6 +63,7 @@ const ChallengePage = () => {
     const [formData, setFormData] = useState({
         firstName: "Henrique",
         lastName: "Freire",
+        document: "",
         email: "freirehp@gmail.com",
         bridgeMeaning: "",
         howToUnderstandReality: "",
@@ -55,17 +101,30 @@ const ChallengePage = () => {
         imageDrawing3: false
     });
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+    const validateForm = () => {
+        const newErrors: Record<string, string> = {};
+
+        // Validação do CPF
+        if (!formData.document) {
+            newErrors.document = "CPF é obrigatório";
+        } else if (formData.document.replace(/\D/g, '').length !== 11) {
+            newErrors.document = "CPF deve ter 11 dígitos";
+        } else if (!validateCPF(formData.document)) {
+            newErrors.document = "CPF inválido";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleNext = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm())
+        {
+            alert("Por favor, informe um cpf valido.");
+            return;
+        }
 
         if ([5, 6, 9].includes(step) && !validateDrawings()) {
             return alert("Por favor, complete a forma geometrica e clique em salvar, antes de prosseguir.");
@@ -78,6 +137,29 @@ const ChallengePage = () => {
 
     const handleBack = () => {
         setStep((prev) => prev - 1);
+    };
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+
+        if (name === 'document') {
+            const formattedValue = formatCPF(value);
+            setFormData(prev => ({
+                ...prev,
+                [name]: formattedValue,
+            }));
+            
+            if (errors.document) {
+                setErrors(prev => ({ ...prev, document: '' }));
+            }
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
     };
 
     const handleSave = async (imageData: string) => {
@@ -175,6 +257,19 @@ const ChallengePage = () => {
                                             name="lastName"
                                             value={formData.lastName}
                                             onChange={handleChange}
+                                            className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="sm:col-span-4">
+                                        <label htmlFor="document" className="block text-sm font-medium text-gray-400">CPF:</label>
+                                        <input
+                                            id="document"
+                                            name="document"
+                                            value={formData.document}
+                                            onChange={handleChange}
+                                            maxLength={14}
+                                            placeholder="000.000.000-00"
                                             className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-gray-300 focus:outline-indigo-600 sm:text-sm"
                                             required
                                         />
