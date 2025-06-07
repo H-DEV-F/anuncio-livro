@@ -209,13 +209,14 @@ const ChallengePage = () => {
 
     const handleSubmit = async () => {
         try {
-
-            if (await fetch(`${anuncioApi}/challengers/${formData.document}`, {
+            const existChallenger = await fetch(`${anuncioApi}/challengers/${formData.document}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            })) {
+            })
+
+            if (existChallenger.ok) {
                 alert('Você já concluiu o desafio, por favor, aguarde o resultado.');
             }
             else {
